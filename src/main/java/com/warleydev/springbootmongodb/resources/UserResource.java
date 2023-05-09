@@ -17,7 +17,7 @@ import java.util.List;
 public class UserResource {
 
     @Autowired
-    private UserServices services;  
+    private UserServices services;
 
     @GetMapping
     public ResponseEntity<List<User>> findAll() {
