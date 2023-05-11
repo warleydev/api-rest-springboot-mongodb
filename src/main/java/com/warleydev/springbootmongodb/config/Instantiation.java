@@ -2,6 +2,7 @@ package com.warleydev.springbootmongodb.config;
 
 import com.warleydev.springbootmongodb.domain.Post;
 import com.warleydev.springbootmongodb.domain.User;
+import com.warleydev.springbootmongodb.dto.AuthorDTO;
 import com.warleydev.springbootmongodb.repositories.PostRepository;
 import com.warleydev.springbootmongodb.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,10 +33,11 @@ public class Instantiation implements CommandLineRunner {
         User user2 = new User(null, "Warley Melo", "warleycm7@gmail.com");
         User user3 = new User(null, "Sunda", "sunda@gmail.com");
 
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "O sunda é bagunceiro", "ELE NAO PARA DE FAZER BAGUNÇA!!!", user1);
-        Post post2 = new Post(null, sdf.parse("22/03/2018"), "Tenha paciência", "Aos pais presentes aqui (cof cof), tenham paciência com seus fihos", user2);
-
         userRepository.saveAll(Arrays.asList(user1, user2, user3));
+
+        Post post1 = new Post(null, sdf.parse("21/03/2018"), "O sunda é bagunceiro", "ELE NAO PARA DE FAZER BAGUNÇA!!!", new AuthorDTO(user1));
+        Post post2 = new Post(null, sdf.parse("22/03/2018"), "Tenha paciência", "Aos pais presentes aqui (cof cof), tenham paciência com seus fihos", new AuthorDTO(user2));
+        
         postRepository.saveAll(Arrays.asList(post1, post2));
     }
 }
