@@ -3,15 +3,13 @@ package com.warleydev.springbootmongodb.resources;
 import com.warleydev.springbootmongodb.domain.Post;
 import com.warleydev.springbootmongodb.domain.User;
 import com.warleydev.springbootmongodb.dto.UserDTO;
-import com.warleydev.springbootmongodb.services.UserServices;
+import com.warleydev.springbootmongodb.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +18,7 @@ import java.util.stream.Collectors;
 public class UserResource {
 
     @Autowired
-    private UserServices services;
+    private UserService services;
 
     @GetMapping
     public ResponseEntity<List<UserDTO>> findAll() {
