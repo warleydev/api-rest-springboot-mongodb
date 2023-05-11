@@ -1,5 +1,6 @@
 package com.warleydev.springbootmongodb.resources;
 
+import com.warleydev.springbootmongodb.domain.Post;
 import com.warleydev.springbootmongodb.domain.User;
 import com.warleydev.springbootmongodb.dto.UserDTO;
 import com.warleydev.springbootmongodb.services.UserServices;
@@ -54,5 +55,11 @@ public class UserResource {
         user.setId(id);
         user = services.update(user);
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> post(@PathVariable String id){
+        List<Post> posts = services.findById(id).getPosts();
+        return ResponseEntity.ok().body(posts);
     }
 }
